@@ -1,11 +1,28 @@
 <app-banner></app-banner>
-
 <h2>Olympic games app</h2>
 <hr />
+
+<!-- Affiche le nombre de données chargées -->
 <p>{{ (olympics$ | async)?.length }} data loaded</p>
 
-<div>
-<ng-template #loading>
+<!-- Section de chargement -->
+<div *ngIf="loading; else content">
   <p>Chargement...</p>
-</ng-template>
 </div>
+
+<!-- Contenu une fois les données chargées -->
+<ng-template #content>
+  <div *ngIf="(olympics$ | async)?.length ?? 0 > 0">
+    <ul>
+      <!-- Affichage de chaque jeu olympique -->
+      <li *ngFor="let olympic of olympics$ | async">
+        <strong>{{ olympic.id }}</strong> - {{ olympic.country }}
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Si aucune donnée n'est disponible -->
+  <ng-template #noData>
+    <p>Aucune donnée disponible.</p>
+  </ng-template>
+</ng-template>
