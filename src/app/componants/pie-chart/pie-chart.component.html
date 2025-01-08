@@ -1,7 +1,12 @@
 <div class="chart-container">
     <ngx-charts-pie-chart 
-      [view]="view"
-      [results]="chartData"
-      [legend]="false">
-    </ngx-charts-pie-chart>
+    [view]="view"
+    [results]="chartData"
+    [gradient]="true"
+    [legend]="false"
+    [labels]="true"
+    [doughnut]="false"
+    [explodeSlices]="false"
+    [animations]="true"
+    ></ngx-charts-pie-chart>
   </div>

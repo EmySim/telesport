@@ -16,6 +16,7 @@ export class PieChartComponent implements OnInit {
   chartData: { name: string; value: number }[] = [];
   view: [number, number] = [700, 400]; // Taille du graphique
   showLegend: boolean = true;
+  
 
   ngOnInit(): void {
     this.chartData = this.olympics.map((olympic) => ({
