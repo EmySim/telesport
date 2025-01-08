@@ -7,18 +7,24 @@
 
 <!-- Section de chargement -->
 <div *ngIf="loading; else content">
-  <p>Chargement...</p>
+  <p>loading..</p>
 </div>
 
 <!-- Contenu une fois les données chargées -->
 <ng-template #content>
-  <div *ngIf="(olympics$ | async)?.length ?? 0 > 0">
+  <div *ngIf="(olympics$ | async) as olympics; else noData">
     <ul>
       <!-- Affichage de chaque jeu olympique -->
       <li *ngFor="let olympic of olympics$ | async">
         <strong>{{ olympic.id }}</strong> - {{ olympic.country }}
       </li>
     </ul>
+
+    <app-pie-chart
+    [olympics]="olympics"
+    [title]="'Répartition des Jeux Olympiques'"
+  ></app-pie-chart>
+
   </div>
   
   <!-- Si aucune donnée n'est disponible -->
