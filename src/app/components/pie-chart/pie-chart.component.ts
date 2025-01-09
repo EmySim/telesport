@@ -1,7 +1,14 @@
-import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { Olympic } from '../../core/models/Olympic';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-//import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pie-chart',
@@ -10,7 +17,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.scss'],
 })
-export class PieChartComponent implements OnChanges  {
+export class PieChartComponent implements OnChanges {
   @Input() olympics: Olympic[] = [];
   @Output() countrySelect = new EventEmitter<{ id: number }>();
 
@@ -19,14 +26,13 @@ export class PieChartComponent implements OnChanges  {
   view: [number, number] = [700, 400]; // Taille du graphique
   showLegend: boolean = false;
 
+  constructor(private router: Router) {}
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['olympics'] && this.olympics) {
       this.formatChartData();
     }
   }
-
-  //constructor(private router: Router) {}
-
 
   // Formater les données pour le graphique
   private formatChartData(): void {
@@ -40,13 +46,14 @@ export class PieChartComponent implements OnChanges  {
     }));
   }
 
-  // Gérer le clic sur un pays
+  // Méthode de redirection
   public onCountryClick(event: { name: string }): void {
     const selectedCountry = this.chartData.find(
       (country) => country.name === event.name
     );
     if (selectedCountry) {
-      this.countrySelect.emit({ id: selectedCountry.id });
+      // Rediriger vers la page de détail avec l'ID du pays
+      this.router.navigate([`/detail/${selectedCountry.id}`]);
     }
   }
 }
