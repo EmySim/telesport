@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-//import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators'; // Import manquant
+import { catchError, tap } from 'rxjs/operators'; 
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { Participation } from 'src/app/core/models/Participation';
 import { LineComponent } from '../../components/line/line.component';
@@ -25,35 +25,51 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private olympicService: OlympicService
+    private olympicService: OlympicService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     // Récupérer le paramètre de la route
     this.route.params.subscribe((params) => {
-      const countryId = Number(params['id']); // Assurez-vous que c'est un nombre
+      const countryId = Number(params['id']); 
       this.countryName = ''; // Si nécessaire, chargez également le nom depuis les données
       this.loading = true;
 
       this.participations$ = this.olympicService
         .getParticipationsByCountry(countryId)
         .pipe(
-          tap(() => (this.loading = false)),
-          catchError((error) => {
-            console.error(
-              'Erreur lors du chargement des participations :',
-              error
-            );
+          tap((participations) => {
             this.loading = false;
-            return of([]);
+            // Mettre à jour les totaux
+            this.totalParticipations = participations.length;
+            this.totalNumberofMedals = participations.reduce(
+              (acc, participation) => acc + participation.medalsCount,
+              0
+            );
+            this.totalNumberofAthletes = participations.reduce(
+              (acc, participation) => acc + participation.athleteCount,
+              0
+            );
+          }),
+          catchError((error) => {
+            console.error('Erreur lors du chargement des participations :', error);
+            this.loading = false;
+            return of([]); // Retourner un tableau vide en cas d'erreur
           })
         );
     });
   }
-}
 
+  // Méthode pour revenir à la page d'accueil
+  public backHome(): void {
+    this.router.navigate(['/']);  // Redirige vers la page d'accueil
+  }
+}
 //nombre de participation
 
 //total de médailles
 
 //nombre d'athletes
+
+
