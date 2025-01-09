@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-banner',
+  selector: 'app-header',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './banner.component.html',
-  styleUrls: ['./banner.component.scss'],
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
 })
-export class BannerComponent {
+export class HeaderComponent {
   title: string = 'Welcome to the Olympic Games App';
 }

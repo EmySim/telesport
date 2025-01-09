@@ -1,33 +1,20 @@
-<app-banner></app-banner>
-<hr />
-
 <h2>Medals per country</h2>
-<!-- Affiche le nombre de participations -->
-<p><strong>{{ totalParticipations }}</strong>Number of OGs</p>
 
-<!-- Affiche le nombre de pays -->
-<p><strong>{{ countriesCount }}</strong>Number of countries</p>
-
-<!-- Affiche le nombre de données chargées 
-<p>{{ (olympics$ | async)?.length }} data loaded</p>-->
-
-<!-- Section de chargement -->
-<div *ngIf="loading; else content">
-  <p>loading..</p>
+<div *ngIf="loading" class="loading-indicator">
+  Chargement en cours...
 </div>
 
-<!-- Contenu une fois les données chargées -->
-<ng-template #content>
-  <div *ngIf="(olympics$ | async) as olympics; else noData">
-    <app-pie-chart
-    [olympics]="olympics"
-    [title]="'Olympic Games Breakdown'"
-  ></app-pie-chart>
+<div *ngIf="!loading">
+  <p>{{ totalParticipations }}Number of OGs</p>
+  <p>{{ countriesCount }}Number of countries</p>
 
+  <!-- Affiche le nombre de données chargées 
+<p>{{ (olympics$ | async)?.length }} data loaded</p>-->
+
+  <div class="chart-container">
+    <app-pie-chart
+    [olympics]="(olympics$ | async) || []"
+    (countrySelect)="onCountrySelect($event)"
+  ></app-pie-chart>
   </div>
-  
-  <!-- Si aucune donnée n'est disponible -->
-  <ng-template #noData>
-    <p>No Data Available</p>
-  </ng-template>
-</ng-template>
+</div>
