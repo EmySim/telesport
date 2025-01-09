@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators'; 
+import { catchError, tap } from 'rxjs/operators';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { Participation } from 'src/app/core/models/Participation';
 import { LineComponent } from '../../components/line/line.component';
@@ -30,13 +30,14 @@ export class DetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Récupérer le paramètre de la route
+    // Récupérer le paramètre de la route et charger les données
     this.route.params.subscribe((params) => {
-      const countryId = Number(params['id']); 
-      this.countryName = ''; // Si nécessaire, chargez également le nom depuis les données
+      const countryId = Number(params['id']);
+      //this.countryName = ''; // Si nécessaire, chargez également le nom depuis les données
       this.loading = true;
 
-      this.participations$ = this.olympicService
+      //charger les participations
+      this.olympicService
         .getParticipationsByCountry(countryId)
         .pipe(
           tap((participations) => {
@@ -53,17 +54,27 @@ export class DetailComponent implements OnInit {
             );
           }),
           catchError((error) => {
-            console.error('Erreur lors du chargement des participations :', error);
+            console.error(
+              'Erreur lors du chargement des participations :',
+              error
+            );
             this.loading = false;
             return of([]); // Retourner un tableau vide en cas d'erreur
           })
-        );
+        )
+        .subscribe();
+
+      this.olympicService
+        .getCountryById(countryId)
+        .subscribe((name: string) => {
+          this.countryName = name;
+        });
     });
   }
 
   // Méthode pour revenir à la page d'accueil
   public backHome(): void {
-    this.router.navigate(['/']);  // Redirige vers la page d'accueil
+    this.router.navigate(['/']); // Redirige vers la page d'accueil
   }
 }
 //nombre de participation
@@ -71,5 +82,3 @@ export class DetailComponent implements OnInit {
 //total de médailles
 
 //nombre d'athletes
-
-
