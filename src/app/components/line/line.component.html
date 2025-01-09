@@ -1,0 +1,22 @@
+<div class="line-chart" *ngIf="chartData && chartData.length > 0; else noData">
+  <ngx-charts-line-chart
+    [results]="chartData"
+    [scheme]="'cool'"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxisLabel]="'Year'"
+    [yAxisLabel]="'Medals Count'"
+    [autoScale]="true"
+    [animations]="true"
+    [timeline]="true"
+  >
+  </ngx-charts-line-chart>
+</div>
+
+<!-- Message si aucune donnée disponible -->
+<ng-template #noData>
+  <p>No data available to display the chart.</p>
+</ng-template>

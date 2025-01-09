@@ -5,10 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { BannerComponent } from '../app/componants/banner/banner.component'; // Importation du composant Banner
+import { HeaderComponent } from './components/header/header.component'; // Importation du composant Banner
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Import animations
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { PieChartComponent } from '../app/componants/pie-chart/pie-chart.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 @NgModule({
   declarations: [
     AppComponent, 
@@ -22,7 +22,7 @@ import { PieChartComponent } from '../app/componants/pie-chart/pie-chart.compone
     NgxChartsModule,
     PieChartComponent,
     HomeComponent,
-    BannerComponent,
+    HeaderComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

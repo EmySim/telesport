@@ -1,0 +1,23 @@
+<h2>{{ countryName }}</h2>
+
+<p>{{ totalParticipations }}Number of entries</p>
+<p>{{ totalNumberofMedals }}Total Number of Medals</p>
+<p>{{ totalNumberofMedals }}Total Number of Athletes</p>
+
+<!-- Affichage des participations une fois chargées -->
+<div *ngIf="(participations$ | async) as participations">
+    <div *ngIf="loading; else content">
+        <p>loading..</p>
+    </div>
+
+    <!-- Contenu lorsque les participations sont chargées -->
+    <ng-template #content>
+        <div *ngIf="(participations$ | async) as participations; else noData">
+            <app-line [data]="participations"></app-line>
+        </div>
+
+<!-- Si aucune donnée n'est disponible -->
+    <ng-template #noData>
+        <p>No Data Available</p>
+    </ng-template>
+</ng-template>
