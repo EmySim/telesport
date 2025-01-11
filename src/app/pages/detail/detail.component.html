@@ -2,19 +2,14 @@
     loading in progress...
 </div>
 
-<div *ngIf="!loading">
-    <h2>{{ countryName }}</h2>
+<h2>{{ countryName }}</h2>
 
-    <p>{{ totalParticipations }}Number of entries</p>
-    <p>{{ totalNumberofMedals }}Total Number of Medals</p>
-    <p>{{ totalNumberofMedals }}Total Number of Athletes</p>
+<p>{{ totalParticipations }}Number of entries</p>
+<p>{{ totalNumberofMedals }}Total Number of Medals</p>
+<p>{{ totalNumberofAthletes }}Total Number of Athletes</p>
 
-    <div class="line-chart-container">
-        <app-line-chart
-        [participations]="(participations$ | async) || []"
-      ></app-line-chart>
-      </div>
-
+<div class="line-chart-container">
+    <app-line-chart [participations]="(participations$ | async) || []"></app-line-chart>
 </div>
 
-<button (click)="backHome()">Back Home</button>
+<app-back-home-button></app-back-home-button>

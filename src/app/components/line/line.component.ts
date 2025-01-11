@@ -30,9 +30,8 @@ export class LineComponent implements OnChanges {
     }
   }
 
-  /**
-   * Formate les données pour ngx-charts
-   */
+  //Formate les données pour ngx-charts
+   
   private formatChartData(): void {
     this.chartData = [
       {
