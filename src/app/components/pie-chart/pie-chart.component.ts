@@ -1,14 +1,6 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import {Component,Input,Output,OnChanges,SimpleChanges,EventEmitter} from '@angular/core';
 import { Olympic } from '../../core/models/Olympic';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pie-chart',
@@ -26,15 +18,15 @@ export class PieChartComponent implements OnChanges {
   view: [number, number] = [700, 400]; // Taille du graphique
   showLegend: boolean = false;
 
-  constructor(private router: Router) {}
-
+  // Méthode appelée à chaque changement d'input (nouvelle liste olympiques)
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['olympics'] && this.olympics) {
+    console.log('Données reçues par le pie chart:', this.olympics);
+    if (changes['olympics'] && this.olympics?.length > 0) {
       this.formatChartData();
     }
   }
 
-  // Formater les données pour le graphique
+  // Formater les données pour le graphique : : Calculer le nombre total de médailles par pays
   private formatChartData(): void {
     this.chartData = this.olympics.map((olympic) => ({
       name: olympic.country,
@@ -46,14 +38,17 @@ export class PieChartComponent implements OnChanges {
     }));
   }
 
-  // Méthode de redirection
-  public onCountryClick(event: { name: string }): void {
-    const selectedCountry = this.chartData.find(
-      (country) => country.name === event.name
-    );
-    if (selectedCountry) {
-      // Rediriger vers la page de détail avec l'ID du pays
-      this.router.navigate([`/detail/${selectedCountry.id}`]);
-    }
+  // Méthode pour émettre l'événement de sélection d'un pays
+onCountrySelect(event: { name: string; value: number; label: string }): void {
+  console.log('Événement sélectionné :', event);
+
+  // Rechercher le pays correspondant dans les données formatées
+  const selectedCountry = this.chartData.find((data) => data.name === event.name);
+
+  if (selectedCountry?.id !== undefined) {
+    this.countrySelect.emit({ id: selectedCountry.id });
+  } else {
+    console.error('ID du pays est undefined ou introuvable dans chartData pour:', event);
   }
+}
 }

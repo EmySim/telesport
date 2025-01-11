@@ -1,4 +1,5 @@
-<div class="chart-container">
+<div *ngIf="(chartData ?? []).length > 0">
+<div class="pie-chart-container">
     <ngx-charts-pie-chart 
     [view]="view"
     [results]="chartData"
@@ -8,6 +9,11 @@
     [doughnut]="false"
     [explodeSlices]="false"
     [animations]="true"
-    (select)="onCountryClick($event)"
+    (select)="onCountrySelect($event)"
     ></ngx-charts-pie-chart>
   </div>
+</div>
+
+<ng-template #noData>
+  <p>No data available to display in graph.</p>
+</ng-template>

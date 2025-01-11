@@ -1,20 +1,18 @@
 <h2>Medals per country</h2>
 
+<!-- Indicateur de chargement -->
 <div *ngIf="loading" class="loading-indicator">
-  Chargement en cours...
+  Loading in progress...
 </div>
 
-<div *ngIf="!loading">
   <p>{{ totalParticipations }}Number of OGs</p>
   <p>{{ countriesCount }}Number of countries</p>
 
-  <!-- Affiche le nombre de données chargées 
-<p>{{ (olympics$ | async)?.length }} data loaded</p>-->
-
-  <div class="chart-container">
-    <app-pie-chart
+<!-- Conteneur pour le graphique -->
+<div class="pie-chart-container">
+  <app-pie-chart
     [olympics]="(olympics$ | async) || []"
     (countrySelect)="onCountrySelect($event)"
   ></app-pie-chart>
-  </div>
 </div>
+

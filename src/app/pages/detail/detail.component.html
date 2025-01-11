@@ -1,25 +1,20 @@
-<h2>{{ countryName }}</h2>
+<div *ngIf="loading" class="loading-indicator">
+    loading in progress...
+</div>
 
-<p>{{ totalParticipations }}Number of entries</p>
-<p>{{ totalNumberofMedals }}Total Number of Medals</p>
-<p>{{ totalNumberofMedals }}Total Number of Athletes</p>
+<div *ngIf="!loading">
+    <h2>{{ countryName }}</h2>
 
-<!-- Affichage des participations une fois chargées -->
-<div *ngIf="(participations$ | async) as participations">
-    <div *ngIf="loading; else content">
-        <p>loading..</p>
-    </div>
+    <p>{{ totalParticipations }}Number of entries</p>
+    <p>{{ totalNumberofMedals }}Total Number of Medals</p>
+    <p>{{ totalNumberofMedals }}Total Number of Athletes</p>
 
-    <!-- Contenu lorsque les participations sont chargées -->
-    <ng-template #content>
-        <div *ngIf="(participations$ | async) as participations; else noData">
-            <app-line [data]="participations"></app-line>
-        </div>
+    <div class="line-chart-container">
+        <app-line-chart
+        [participations]="(participations$ | async) || []"
+      ></app-line-chart>
+      </div>
 
-<!-- Si aucune donnée n'est disponible -->
-    <ng-template #noData>
-        <p>No Data Available</p>
-    </ng-template>
-</ng-template>
+</div>
 
 <button (click)="backHome()">Back Home</button>

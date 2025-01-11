@@ -11,6 +11,10 @@ export class AppComponent implements OnInit {
   constructor(private olympicService: OlympicService) {}
 
   ngOnInit(): void {
-    this.olympicService.loadInitialData().pipe(take(1)).subscribe();
+    // Utilisez getOlympicsData pour charger les données
+    this.olympicService.getOlympicsData().pipe(take(1)).subscribe({
+      next: () => console.log('Données initiales chargées dans AppComponent'),
+      error: (err) => console.error('Erreur lors du chargement initial des données :', err),
+    });
   }
 }
