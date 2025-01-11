@@ -1,4 +1,4 @@
-<div class="line-chart" *ngIf="chartData && chartData.length > 0; else noData">
+<div class="line-chart">
   <ngx-charts-line-chart
     [results]="chartData"
     [scheme]="'cool'"
@@ -16,7 +16,3 @@
   </ngx-charts-line-chart>
 </div>
 
-<!-- Message si aucune donnée disponible -->
-<ng-template #noData>
-  <p>No data available to display the chart.</p>
-</ng-template>
