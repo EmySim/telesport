@@ -8,11 +8,12 @@
     [showXAxisLabel]="true"
     [showYAxisLabel]="true"
     [xAxisLabel]="'Year'"
-    [yAxisLabel]="'Medals Count'"
     [autoScale]="true"
     [animations]="true"
     [timeline]="true"
   >
   </ngx-charts-line-chart>
-</div>
 
+<ng-template #noDataTemplate>
+  <p>No data available to display on graph.</p>
+</ng-template>

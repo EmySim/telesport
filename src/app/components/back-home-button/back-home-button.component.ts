@@ -14,5 +14,6 @@ export class BackHomeButtonComponent {
 
   backHome(): void {
     this.navigationService.navigateToHome();
+    console.log('Navigating to home...');
   }
 }

@@ -2,6 +2,16 @@
     loading in progress...
 </div>
 
+<!-- Affichage du message lorsqu'il n'y a pas de données disponibles
+<div *ngIf="noDataAvailable && !loading && !errorOccurred" class="no-data-indicator">
+    Data unavailable.
+  </div> -->
+  
+  <!-- Affichage du message en cas d'erreur 
+  <div *ngIf="errorOccurred && !loading" class="error-indicator">
+    Failed to load data. Please try again later.
+  </div>-->
+
 <h2>{{ countryName }}</h2>
 
 <p>{{ totalParticipations }}Number of entries</p>

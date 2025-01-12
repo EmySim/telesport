@@ -12,8 +12,13 @@ export class NavigationService {
     this.router.navigate(['/']);
   }
 
-  // Ajouter d'autres méthodes de navigation ici si nécessaire
+  // vers page détail
   navigateToDetail(id: number): void {
     this.router.navigate([`/detail/${id}`]);
+  }
+
+  // vers 404
+  navigateToNotFound(): void {
+    this.router.navigate(['/**']);
   }
 }
