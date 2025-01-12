@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import {Component,OnInit,OnDestroy, ChangeDetectionStrategy,} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subject, EMPTY } from 'rxjs';
@@ -19,6 +19,8 @@ import { BackHomeButtonComponent } from '../../components/back-home-button/back-
 export class CountryDetailComponent implements OnInit, OnDestroy {
   public participations$: Observable<Participation[]> = EMPTY;
   public loading = true;
+  //public noDataAvailable = false;  // Flag pour absence de données
+  //public errorOccurred = false;    // Flag pour erreur de chargement
   public countryName = '';
   public totalParticipations = 0;
   public totalNumberofMedals = 0;
@@ -71,10 +73,10 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
       }),
       { medals: 0, athletes: 0 }
     );
-
-    this.totalNumberofMedals = medals;
-    this.totalNumberofAthletes = athletes;
-  }
+  
+      this.totalNumberofMedals = medals;
+      this.totalNumberofAthletes = athletes;
+    }
 
   ngOnDestroy(): void {
     this.destroy$.next();

@@ -14,6 +14,10 @@ const routes: Routes = [
     component: CountryDetailComponent,
   },
   {
+    path: '404', // Alias pour la page Not Found
+    component: NotFoundComponent,
+  },
+  {
     path: '**', // wildcard
     component: NotFoundComponent,
   },

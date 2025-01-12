@@ -12,7 +12,6 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 @NgModule({
   declarations: [
     AppComponent, 
-    NotFoundComponent,
   ],
   imports: [
     BrowserModule, 
@@ -23,6 +22,7 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
     PieChartComponent,
     HomeComponent,
     HeaderComponent,
+    NotFoundComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

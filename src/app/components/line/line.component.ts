@@ -7,7 +7,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   standalone: true,
   imports: [NgxChartsModule],
   templateUrl: './line.component.html',
-  styleUrl: './line.component.scss',
+  styleUrls: ['./line.component.scss'],
 })
 export class LineComponent implements OnChanges {
   @Input() participations: Participation[] = []; // Données des participations
@@ -15,44 +15,36 @@ export class LineComponent implements OnChanges {
   // Données formatées pour ngx-charts
   chartData: { name: string; series: { name: string; value: number }[] }[] = [];
   view: [number, number] = [700, 400]; // Taille du graphique
-  // Options du graphique
-  showLegend: boolean = true;
-  showXAxis: boolean = true;
-  showYAxis: boolean = true;
-  showXAxisLabel: boolean = true;
-  showYAxisLabel: boolean = true;
-  xAxisLabel: string = 'Années';
-  yAxisLabel: string = 'Nombre';
 
+  // Options du graphique
+  showLegend = true;
+  showXAxis = true;
+  showYAxis = true;
+  showXAxisLabel = true;
+  showYAxisLabel = false;
+  xAxisLabel = 'Années';
+
+  /**
+   * Méthode déclenchée lorsqu'une propriété @Input() change.
+   */
   ngOnChanges(): void {
-    if (this.participations && this.participations.length > 0) {
+    if (this.participations?.length) {
       this.formatChartData();
+    } else {
+      this.chartData = [];
     }
   }
 
-  //Formate les données pour ngx-charts
-   
+  /**
+   * Formate les données pour ngx-charts.
+   */
   private formatChartData(): void {
     this.chartData = [
-      {
-        name: 'Participations',
-        series: this.participations.map((p: Participation) => ({
-          name: p.year.toString(),
-          value: 1, // Chaque année représente une participation
-        })),
-      },
       {
         name: 'Médailles',
         series: this.participations.map((p: Participation) => ({
           name: p.year.toString(),
           value: p.medalsCount,
-        })),
-      },
-      {
-        name: 'Athlètes',
-        series: this.participations.map((p: Participation) => ({
-          name: p.year.toString(),
-          value: p.athleteCount,
         })),
       },
     ];
