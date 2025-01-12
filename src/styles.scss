@@ -1,1 +1,83 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+
+// Variables de couleurs
+$primary-color: #00797d; // Vert sarcelle
+$secondary-color: #5b2b2d; // Rouge foncé
+$light-gray: #f4f4f4;
+$dark-gray: #333333;
+$chart-line-colors: (
+  #c7d2fe,
+  #a7b4f0,
+  #8b95d8,
+  #716ac4,
+  $primary-color
+);
+
+// Styles globaux
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: $light-gray;
+  color: $dark-gray;
+}
+
+// Titres
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  margin: 0;
+  color: $primary-color;
+}
+
+.section-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+// Composants de carte
+.card {
+  border: 1px solid $primary-color;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: $light-gray;
+
+  &__title {
+    font-size: 16px;
+    color: $dark-gray;
+  }
+
+  &__value {
+    font-size: 24px;
+    font-weight: 700;
+    color: $primary-color;
+  }
+}
+
+// Conteneur de graphique
+.chart-container {
+  margin-top: 24px;
+
+  .chart-title {
+    font-size: 20px;
+    text-align: center;
+    color: $primary-color;
+  }
+}
+
+// Grilles responsives
+.grid {
+  display: grid;
+  gap: 16px;
+
+  &--3-cols {
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr; // Passage à une colonne sur mobile
+    }
+  }
+}
