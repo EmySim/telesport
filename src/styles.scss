@@ -1,3 +1,8 @@
+//@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+// _global.scss
+//@import './variables';
+
+// _variables.scss
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
 
 // Variables de couleurs
@@ -5,6 +10,8 @@ $primary-color: #00797d; // Vert sarcelle
 $secondary-color: #5b2b2d; // Rouge foncé
 $light-gray: #f4f4f4;
 $dark-gray: #333333;
+
+// Couleurs pour les graphiques
 $chart-line-colors: (
   #c7d2fe,
   #a7b4f0,
@@ -34,27 +41,6 @@ h1, h2, h3 {
   font-size: 24px;
   text-align: center;
   margin-bottom: 16px;
-}
-
-// Composants de carte
-.card {
-  border: 1px solid $primary-color;
-  border-radius: 8px;
-  padding: 16px;
-  text-align: center;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: $light-gray;
-
-  &__title {
-    font-size: 16px;
-    color: $dark-gray;
-  }
-
-  &__value {
-    font-size: 24px;
-    font-weight: 700;
-    color: $primary-color;
-  }
 }
 
 // Conteneur de graphique
