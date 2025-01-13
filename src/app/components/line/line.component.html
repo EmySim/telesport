@@ -12,8 +12,22 @@
     [animations]="true"
     [timeline]="true"
   >
-  </ngx-charts-line-chart>
 
-<ng-template #noDataTemplate>
-  <p>No data available to display on graph.</p>
-</ng-template>
+  <!-- Tooltip personnalisé -->
+      <ng-template #tooltipTemplate let-model="model">
+        <div class="tooltip-content">
+          <i class="fa-solid fa-award"></i>
+          {{ model.value }}
+          {{ model.city }}
+        </div>
+      </ng-template>
+
+</ngx-charts-line-chart>
+
+  <ng-template #noDataTemplate>
+    <p>No data available to display on graph.</p>
+  </ng-template>
+
+
+
+

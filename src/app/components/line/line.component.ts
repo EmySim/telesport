@@ -13,7 +13,7 @@ export class LineComponent implements OnChanges {
   @Input() participations: Participation[] = []; // Données des participations
 
   // Données formatées pour ngx-charts
-  chartData: { name: string; series: { name: string; value: number }[] }[] = [];
+  chartData: { name: string; series: { name: string; value: number; city: string }[] }[] = [];
   view: [number, number] = [700, 400]; // Taille du graphique
 
   // Options du graphique
@@ -41,10 +41,11 @@ export class LineComponent implements OnChanges {
   private formatChartData(): void {
     this.chartData = [
       {
-        name: 'Médailles',
+        name: 'Medals',
         series: this.participations.map((p: Participation) => ({
           name: p.year.toString(),
           value: p.medalsCount,
+          city: p.city,
         })),
       },
     ];

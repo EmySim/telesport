@@ -9,9 +9,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Import animations
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,  
   ],
   imports: [
     BrowserModule, 
@@ -24,7 +25,9 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
     HeaderComponent,
     NotFoundComponent,
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
