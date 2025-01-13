@@ -1,4 +1,11 @@
-import {Component,Input,Output,OnChanges,SimpleChanges,EventEmitter} from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  OnChanges,
+  SimpleChanges,
+  EventEmitter,
+} from '@angular/core';
 import { Olympic } from '../../core/models/Olympic';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -16,7 +23,6 @@ export class PieChartComponent implements OnChanges {
   // Données formatées pour ngx-charts
   chartData: { name: string; value: number; id: number }[] = [];
   view: [number, number] = [700, 400]; // Taille du graphique
-  showLegend: boolean = false;
 
   // Méthode appelée à chaque changement d'input (nouvelle liste olympiques)
   ngOnChanges(changes: SimpleChanges): void {
@@ -35,20 +41,26 @@ export class PieChartComponent implements OnChanges {
         0
       ),
       id: olympic.id,
+      icon: 'fa-award'
     }));
   }
 
   // Méthode pour émettre l'événement de sélection d'un pays
-onCountrySelect(event: { name: string; value: number; label: string }): void {
-  console.log('Événement sélectionné :', event);
+  onCountrySelect(event: { name: string; value: number; label: string }): void {
+    console.log('Événement sélectionné :', event);
 
-  // Rechercher le pays correspondant dans les données formatées
-  const selectedCountry = this.chartData.find((data) => data.name === event.name);
+    // Rechercher le pays correspondant dans les données formatées
+    const selectedCountry = this.chartData.find(
+      (data) => data.name === event.name
+    );
 
-  if (selectedCountry?.id !== undefined) {
-    this.countrySelect.emit({ id: selectedCountry.id });
-  } else {
-    console.error('ID du pays est undefined ou introuvable dans chartData pour:', event);
+    if (selectedCountry?.id !== undefined) {
+      this.countrySelect.emit({ id: selectedCountry.id });
+    } else {
+      console.error(
+        'ID du pays est undefined ou introuvable dans chartData pour:',
+        event
+      );
+    }
   }
-}
 }

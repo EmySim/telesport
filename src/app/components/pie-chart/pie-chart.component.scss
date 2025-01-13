@@ -9,3 +9,13 @@
     width: 100%; 
     height: auto; 
   }
+
+  .tooltip-container {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  .tooltip-container mat-icon {
+    margin-right: 8px;
+  }
