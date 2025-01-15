@@ -1,6 +1,7 @@
 
     <div class="headline">
       <h2 class="headline-title">Medals per country</h2>
+    </div>
 
       <!-- Indicateur de chargement -->
       <div *ngIf="loading" class="loading-indicator">
@@ -22,4 +23,4 @@
       <div class="pie-chart-container">
         <app-pie-chart [olympics]="(olympics$ | async) || []" (countrySelect)="onCountrySelect($event)"></app-pie-chart>
       </div>
-    </div>
+    
