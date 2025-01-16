@@ -1,11 +1,12 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Participation } from 'src/app/core/models/Participation';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { TooltipComponent } from '../tooltip/tooltip.component';
 
 @Component({
   selector: 'app-line-chart',
   standalone: true,
-  imports: [NgxChartsModule],
+  imports: [NgxChartsModule, TooltipComponent],
   templateUrl: './line.component.html',
   styleUrls: ['./line.component.scss'],
 })
@@ -14,7 +15,7 @@ export class LineComponent implements OnChanges {
 
   // Données formatées pour ngx-charts
   chartData: { name: string; series: { name: string; value: number; city: string }[] }[] = [];
-  view: [number, number] = [700, 400]; // Taille du graphique
+  view: [number, number] = [700, 400]; 
 
   // Options du graphique
   showLegend = true;
@@ -50,4 +51,6 @@ export class LineComponent implements OnChanges {
       },
     ];
   }
+
+
 }

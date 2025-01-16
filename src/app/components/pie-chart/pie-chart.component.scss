@@ -1,21 +1,15 @@
-:host {
-    display: block;
-    width: 100%; 
-    max-width: 100%; 
-    margin: 0 auto; 
-  }
-  
-  .pie-chart-container {
-    width: 100%; 
-    height: auto; 
-  }
+@import "../tooltip/tooltip.component.scss";
+@import "../../../styles.scss";
 
-  .tooltip-container {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
+$chart-pie-colors: (#ffcccb, #90ee90, #add8e6, #9370db, #ffdead);
+
+.pie-chart-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+
+  ngx-charts-pie-chart {
+    width: 500px;
+    height: 500px;
   }
-  
-  .tooltip-container mat-icon {
-    margin-right: 8px;
-  }
+}

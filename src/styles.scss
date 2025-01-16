@@ -1,69 +1,80 @@
-//@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
-// _global.scss
-//@import './variables';
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap");
 
-// _variables.scss
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
-
-// Variables de couleurs
-$primary-color: #00797d; // Vert sarcelle
-$secondary-color: #5b2b2d; // Rouge foncé
-$light-gray: #f4f4f4;
-$dark-gray: #333333;
-
-// Couleurs pour les graphiques
-$chart-line-colors: (
-  #c7d2fe,
-  #a7b4f0,
-  #8b95d8,
-  #716ac4,
-  $primary-color
-);
+// Palette de couleurs
+$primary-color: #04828e;
+$secondary-color:  #ffffff;
+$accent-color: #9a9698;
+//$background-color: #ffffff;
 
 // Styles globaux
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin: 0;
-  padding: 0;
-  background-color: $light-gray;
-  color: $dark-gray;
+  padding: 0 20;
+  background-color: $secondary-color;
 }
 
-// Titres
-h1, h2, h3 {
-  font-family: 'Montserrat', sans-serif;
+h1,
+h2,
+h3 {
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  margin: 0;
   color: $primary-color;
-}
-
-.section-title {
-  font-size: 24px;
+  font-weight: 400;
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
-// Conteneur de graphique
-.chart-container {
-  margin-top: 24px;
-
-  .chart-title {
-    font-size: 20px;
-    text-align: center;
-    color: $primary-color;
-  }
+.headline {
+  display: flex;
+  justify-content: center;
 }
 
-// Grilles responsives
-.grid {
-  display: grid;
-  gap: 16px;
+.headline-title {
+  color: $secondary-color;
+  background-color: $primary-color;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+}
 
-  &--3-cols {
-    grid-template-columns: repeat(3, 1fr);
+p {
+  margin: 0;
+}
 
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr; // Passage à une colonne sur mobile
-    }
-  }
+.main-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.home-data {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
+}
+
+.data-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+  border: 1.5px solid $primary-color;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  width: auto;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: $accent-color;
+  margin-bottom: 0.5rem;
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $primary-color;
 }

@@ -1,0 +1,11 @@
+@import "../../../styles.scss";
+
+.main-container {
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+

@@ -1,0 +1,6 @@
+@import "../../../styles.scss";
+
+::ng-deep ngx-charts-tooltip-content.type-tooltip {
+  background-color: $primary-color !important;
+  color: $secondary-color !important;
+}

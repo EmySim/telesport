@@ -8,11 +8,12 @@ import {
 } from '@angular/core';
 import { Olympic } from '../../core/models/Olympic';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { TooltipComponent } from '../tooltip/tooltip.component';
 
 @Component({
   selector: 'app-pie-chart',
   standalone: true,
-  imports: [NgxChartsModule],
+  imports: [NgxChartsModule, TooltipComponent],
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.scss'],
 })
@@ -22,7 +23,7 @@ export class PieChartComponent implements OnChanges {
 
   // Données formatées pour ngx-charts
   chartData: { name: string; value: number; id: number }[] = [];
-  view: [number, number] = [700, 400]; // Taille du graphique
+  view: [number, number] = [700, 400]; 
 
   // Méthode appelée à chaque changement d'input (nouvelle liste olympiques)
   ngOnChanges(changes: SimpleChanges): void {
@@ -32,7 +33,8 @@ export class PieChartComponent implements OnChanges {
     }
   }
 
-  // Formater les données pour le graphique : : Calculer le nombre total de médailles par pays
+  // Formater les données pour le graphique
+  // /Calculer le nombre total de médailles par pays
   private formatChartData(): void {
     this.chartData = this.olympics.map((olympic) => ({
       name: olympic.country,
@@ -41,7 +43,6 @@ export class PieChartComponent implements OnChanges {
         0
       ),
       id: olympic.id,
-      icon: 'fa-award'
     }));
   }
 
