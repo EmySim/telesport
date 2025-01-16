@@ -1,25 +1,39 @@
-<div *ngIf="loading" class="loading-indicator">
-    loading in progress...
-</div>
 
-<!-- Affichage du message lorsqu'il n'y a pas de données disponibles
+    <div *ngIf="loading" class="loading-indicator">
+      loading in progress...
+    </div>
+
+    <!-- Affichage du message lorsqu'il n'y a pas de données disponibles
 <div *ngIf="noDataAvailable && !loading && !errorOccurred" class="no-data-indicator">
     Data unavailable.
   </div> -->
-  
-  <!-- Affichage du message en cas d'erreur 
+
+    <!-- Affichage du message en cas d'erreur 
   <div *ngIf="errorOccurred && !loading" class="error-indicator">
     Failed to load data. Please try again later.
   </div>-->
 
-<h2>{{ countryName }}</h2>
+    <div class="headline">
+      <h2 class="headline-title">{{ countryName }}</h2>
+    </div>
+    <div class="home-data">
+      <div class="data-card">
+        <p class="value">{{ totalParticipations }}</p>
+          <p class="label">Number of entries</p>
+      </div>
+      <div class="data-card">
+        <p class="value">{{ totalNumberofMedals }}</p>
+        <p class="label">Total Number of Medals</p>
+      </div>
+      <div class="data-card">
+        <p class="value">{{ totalNumberofAthletes }}</p>
+        <p class="label">Total Number of Athletes</p>
+      </div>
+    </div>
 
-<p>{{ totalParticipations }}Number of entries</p>
-<p>{{ totalNumberofMedals }}Total Number of Medals</p>
-<p>{{ totalNumberofAthletes }}Total Number of Athletes</p>
+    <div class="line-chart-container">
+      <app-line-chart [participations]="(participations$ | async) || []"></app-line-chart>
+    </div>
 
-<div class="line-chart-container">
-    <app-line-chart [participations]="(participations$ | async) || []"></app-line-chart>
-</div>
-
-<app-back-home-button></app-back-home-button>
+    <app-back-home-button></app-back-home-button>
+  

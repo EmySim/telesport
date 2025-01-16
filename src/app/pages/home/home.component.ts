@@ -52,8 +52,12 @@ export class HomeComponent implements OnInit {
    * @param error Erreur capturée.
    * @returns Observable vide.
    */
-  private handleError(error: any): Observable<never> {
-    console.error(this.ERROR_MESSAGE, error);
+  private handleError(error: unknown): Observable<never> {
+    if (typeof error === 'object' && error !== null && 'message' in error) {
+      console.error('Error message:', (error as { message: string }).message);
+    } else {
+      console.error('An unknown error occurred:', error);
+    }
     this.loading = false;
     return EMPTY;
   }
