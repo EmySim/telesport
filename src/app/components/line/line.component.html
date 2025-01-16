@@ -13,10 +13,10 @@
     [timeline]="true">
 
     <!-- Tooltip personnalisé -->
-    <ng-template #tooltipTemplate let-model="model">
+      <ng-template #tooltipTemplate let-model="model">
       <TooltipComponent 
-      [medalsCount]="model.value" 
-      [city]="model.series">
+      [medalsCount]="model.value"
+      [city]="model.city">
       </TooltipComponent>
     </ng-template>
 

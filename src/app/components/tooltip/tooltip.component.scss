@@ -1,16 +1,6 @@
 @import "../../../styles.scss";
 
-.tooltip-content {
-    background-color: $primary-color;
-    color: $secondary-color;
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-
-    i {
-      margin-left: 0.5rem;
-      color: $secondary-color;
-    }
-  }
+::ng-deep ngx-charts-tooltip-content.type-tooltip {
+  background-color: $primary-color !important;
+  color: $secondary-color !important;
+}
