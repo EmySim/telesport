@@ -84,4 +84,6 @@ Utilize the core folder for shared or essential application logic.
 
 Ensure reusable components are modular and placed in the components folder.
 
+[MVP_Wireframe_Spec.pdf](https://github.com/user-attachments/files/18446272/MVP_Wireframe_Spec.pdf)
+
 You're now ready to start working on the project. Good luck!
