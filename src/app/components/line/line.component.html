@@ -1,33 +1,29 @@
 <div class="line-chart">
-  <ngx-charts-line-chart
-    [results]="chartData"
-    [scheme]="'cool'"
-    [xAxis]="true"
-    [yAxis]="true"
+  <ngx-charts-line-chart 
+    [results]="chartData" 
+    [scheme]="'cool'" 
+    [xAxis]="true" 
+    [yAxis]="true" 
     [legend]="true"
-    [showXAxisLabel]="true"
-    [showYAxisLabel]="true"
-    [xAxisLabel]="'Year'"
-    [autoScale]="true"
+    [showXAxisLabel]="true" 
+    [showYAxisLabel]="true" 
+    [xAxisLabel]="'Year'" 
+    [autoScale]="true" 
     [animations]="true"
-    [timeline]="true"
-  >
+    [timeline]="true">
 
-  <!-- Tooltip personnalisé -->
-      <ng-template #tooltipTemplate let-model="model">
-        <div class="tooltip-content">
-          <i class="fa-solid fa-award"></i>
-          {{ model.value }}
-          {{ model.city }}
-        </div>
+    <!-- Tooltip personnalisé -->
+    <ng-template #tooltipTemplate let-model="model">
+      <TooltipComponent 
+      [medalsCount]="model.value" 
+      [city]="model.series">
+      </TooltipComponent>
+    </ng-template>
+
+    <ng-container *ngIf="!chartData?.length">
+      <ng-template #noDataTemplate>
+        <p>Aucune donnée disponible pour le graphique.</p>
       </ng-template>
-
-</ngx-charts-line-chart>
-
-  <ng-template #noDataTemplate>
-    <p>No data available to display on graph.</p>
-  </ng-template>
-
-
-
-
+    </ng-container>
+    </ngx-charts-line-chart>
+</div>

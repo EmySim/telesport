@@ -1,6 +1,7 @@
+@import "../tooltip/tooltip.component.scss";
+@import "../../../styles.scss";
+
 $chart-pie-colors: (#ffcccb, #90ee90, #add8e6, #9370db, #ffdead);
-$tooltip-bg: rgba(0, 0, 0, 0.7); // Fond de l'infobulle
-$tooltip-text: #ffffff; // Texte de l'infobulle
 
 .pie-chart-container {
   display: flex;
@@ -10,21 +11,5 @@ $tooltip-text: #ffffff; // Texte de l'infobulle
   ngx-charts-pie-chart {
     width: 500px;
     height: 500px;
-
-    // Style de l'info-bulle
-    .tooltip-content {
-      background-color: $tooltip-bg;
-      color: $tooltip-text;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      font-size: 0.8rem;
-      display: flex;
-      align-items: center;
-
-      i {
-        margin-left: 0.5rem;
-        color: $tooltip-text;
-      }
-    }
   }
 }
