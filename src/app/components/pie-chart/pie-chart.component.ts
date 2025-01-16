@@ -33,7 +33,8 @@ export class PieChartComponent implements OnChanges {
     }
   }
 
-  // Formater les données pour le graphique : : Calculer le nombre total de médailles par pays
+  // Formater les données pour le graphique
+  // /Calculer le nombre total de médailles par pays
   private formatChartData(): void {
     this.chartData = this.olympics.map((olympic) => ({
       name: olympic.country,

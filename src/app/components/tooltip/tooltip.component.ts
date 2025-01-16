@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './tooltip.component.html',
-  styleUrl: './tooltip.component.scss'
+  styleUrls: ['./tooltip.component.scss'],
 })
 
 export class TooltipComponent {

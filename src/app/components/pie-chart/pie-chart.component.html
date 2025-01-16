@@ -1,16 +1,15 @@
-<div *ngIf="(chartData ?? []).length > 0">
+<div *ngIf="(chartData ?? []).length > 0; else noData">
   <div class="pie-chart-container">
     <ngx-charts-pie-chart 
     [view]="view" 
-    [results]="chartData" [
-    gradient]="true" 
+    [results]="chartData" 
+    [gradient]="true" 
     [legend]="false" 
     [labels]="true"
     [doughnut]="false" 
     [explodeSlices]="false" 
     [animations]="true" 
-    (select)="onCountrySelect($event)"
-    >
+    (select)="onCountrySelect($event)">
   </ngx-charts-pie-chart>
       
       <!-- Tooltip -->
