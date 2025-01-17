@@ -19,9 +19,35 @@ Ensure you have the following installed on your system:
 ### Steps to Install
 To get started with the project, clone the repository, navigate to the project directory, and install the dependencies:
 
-- Clone the repository by running: git clone https://github.com/yourusername/your-repository-name.git
+- Clone the repository by running ```bash git clone https://github.com/yourusername/your-repository-name.git
 - Navigate to the project directory using: cd your-repository-name
+###NPM installation
 - Install the required dependencies by executing: `npm install`
+
+### Adding ng-chart **📊**
+-Install the librabry `npm install ng-chart`
+-Import the module into the project.
+
+In app.module.ts add :
+    import { NgChartsModule } from 'ng2-charts';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    // other components
+  ],
+  imports: [
+    BrowserModule,
+    NgChartsModule, // Import the ng-chart module
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+
+-Optional: Add initial chart setup instructions for your components as needed.
+
+For more details, check [the official ng-chart documentation](https://swimlane.gitbook.io/ngx-charts).
 
 ## Development Server
 To run the application locally, use the `ng serve` command. Afterward, navigate to http://localhost:4200/ in your browser. The application will automatically reload if you change any of the source files.
@@ -62,9 +88,9 @@ If you want to contribute to the project, follow these steps:
 5. Open a pull request.
 
 ## Additional Notes **📄**
-Follow best practices for Angular development, such as maintaining a clear separation of concerns between components, services, and models.
+Follow best practices for Angular development, such as maintaining a clear separation of concerns between components, services, and models ([text](https://angular.dev/style-guide))
 Utilize the core folder for shared or essential application logic.
 Ensure reusable components are modular and placed in the components folder.
 For further details, refer to the following wireframe specification:
 
-You're now ready to start working on the project. Good luck!
+**👍** You're now ready to start working on the project. Good luck! **🍀**

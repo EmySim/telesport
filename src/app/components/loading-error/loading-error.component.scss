@@ -1,14 +1,13 @@
 @import "../../../styles.scss";
 
-.loading-container {
-    text-align: center;
-    padding: 20px;
-    font-size: 16px;
-  }
-  
-  .error-container {
-    text-align: center;
-    padding: 20px;
-    color: red;
-    font-size: 16px;
-  }
+.loading-indicator h2 {
+  color: $primary-color; 
+}
+
+.error-indicator h2 {
+  color: red;
+}
+
+.no-data-indicator h2 {
+  color: $primary-color; 
+}

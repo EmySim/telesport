@@ -3,20 +3,24 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-loading-error',
-  standalone: true, // Ajout de standalone ici
+  standalone: true,
   imports: [CommonModule],
   template: `
-    <div *ngIf="loading" class="loading-indicator">Loading in progress...</div>
-    <div *ngIf="error && !loading" class="error-indicator">{{ error }}</div>
+    <div *ngIf="loading" class="loading-indicator">
+      <h2>Loading in progress...</h2>
+    </div>
+    <div *ngIf="error && !loading" class="error-indicator">
+      <h2>{{ error }}</h2>
+    </div>
     <div *ngIf="!loading && !error && !dataAvailable" class="no-data-indicator">
-      Data unavailable.
+      <h2>Data unavailable.</h2>
     </div>
     <ng-content *ngIf="!loading && !error && dataAvailable"></ng-content>
   `,
   styleUrls: ['./loading-error.component.scss'],
 })
 export class LoadingErrorComponent {
-  @Input() loading = false;
-  @Input() error: string | null = null;
+  @Input() loading = false; 
+  @Input() error: string | null = null; 
   @Input() dataAvailable = false;
 }
