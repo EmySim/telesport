@@ -3,7 +3,7 @@
 ## Project Description
 This is an Angular-based front-end project that displays **Olympic data** in different formats, including pie and line charts. The application integrates interactive charts and tooltips to present information in a user-friendly manner.
 
-## Installation **🚀
+## Installation **🚀**
 This project was generated with Angular CLI version 18.0.3.
 Please ensure that all additional libraries are compatible with the dependencies (refer to angular.json for version checks).
 
@@ -29,7 +29,7 @@ To run the application locally, use the `ng serve` command. Afterward, navigate 
 ## Build
 For production, use the `ng build` command to build the project. The output will be stored in the dist/ directory.
 
-## Project Architecture **🛠️
+## Project Architecture **🛠️**
 The project follows a predefined architecture, which can be customized to suit your needs. It includes the following folders:
 
 - components: Contains reusable components.
@@ -38,7 +38,7 @@ The project follows a predefined architecture, which can be customized to suit y
 - services: Manages the application's data.
 - models: Defines TypeScript interfaces and models.
 
-## Features **📱
+## Features **📱**
 - Responsive Design: The application is designed to be responsive and works on both desktop and mobile devices.
 - Data Integration: The data for the charts is mapped and formatted to ensure accurate display of information.
 - Interactive Pie and Line Charts: The project uses ngx-charts to display Olympic data in pie and line chart formats.

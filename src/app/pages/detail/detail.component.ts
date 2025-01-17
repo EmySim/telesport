@@ -7,20 +7,20 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
 import { Participation } from 'src/app/core/models/Participation';
 import { LineComponent } from '../../components/line/line.component';
 import { BackHomeButtonComponent } from '../../components/back-home-button/back-home-button.component';
+import { LoadingErrorComponent } from '../../components/loading-error/loading-error.component';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss'],
   standalone: true,
-  imports: [CommonModule, LineComponent, BackHomeButtonComponent],
+  imports: [CommonModule, LineComponent, BackHomeButtonComponent, LoadingErrorComponent],
   changeDetection: ChangeDetectionStrategy.OnPush, // Ajout pour limiter les cycles de détection
 })
 export class CountryDetailComponent implements OnInit, OnDestroy {
   public participations$: Observable<Participation[]> = EMPTY;
   public loading = true;
-  //public noDataAvailable = false;  // Flag pour absence de données
-  //public errorOccurred = false;    // Flag pour erreur de chargement
+  public error: string | null = null;
   public countryName = '';
   public totalParticipations = 0;
   public totalNumberofMedals = 0;
@@ -48,7 +48,10 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (name: string) => (this.countryName = name),
-        error: (error) => console.error(`Erreur chargement nom pays :`, error),
+        error: (error) => {
+          console.error(`Erreur lors du chargement du nom du pays :`, error);
+          this.error = 'Failed to load country name';
+        },
       });
   }
 

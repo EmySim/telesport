@@ -14,8 +14,11 @@ export class LineComponent implements OnChanges {
   @Input() participations: Participation[] = []; // Données des participations
 
   // Données formatées pour ngx-charts
-  chartData: { name: string; series: { name: string; value: number; city: string }[] }[] = [];
-  view: [number, number] = [700, 400]; 
+  chartData: {
+    name: string;
+    series: { name: string; value: number; city: string }[];
+  }[] = [];
+  view: [number, number] = [700, 400];
 
   // Options du graphique
   showLegend = true;
@@ -51,6 +54,4 @@ export class LineComponent implements OnChanges {
       },
     ];
   }
-
-
 }

@@ -6,22 +6,24 @@ import { Router } from '@angular/router';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { Olympic } from '../../core/models/Olympic';
 import { PieChartComponent } from '../../components/pie-chart/pie-chart.component';
+import { LoadingErrorComponent } from '../../components/loading-error/loading-error.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,
-  imports: [CommonModule, PieChartComponent],
+  imports: [CommonModule, PieChartComponent, LoadingErrorComponent],
   changeDetection: ChangeDetectionStrategy.OnPush, // Optimisation
 })
 export class HomeComponent implements OnInit {
   public olympics$: Observable<Olympic[]> = EMPTY; // Flux des données Olympics
   public loading = true; // État de chargement
+  public error: string | null = null;
   public countriesCount = 0;
   public totalParticipations = 0;
 
-  private readonly ERROR_MESSAGE = 'Erreur lors de la récupération des données :';
+  //private readonly ERROR_MESSAGE = 'Erreur lors de la récupération des données :';
   private readonly ROUTE_DETAIL = '/detail';
 
   constructor(private olympicService: OlympicService, private router: Router) {}
@@ -29,7 +31,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympicsData().pipe(
       tap((data: Olympic[]) => this.processOlympicData(data)),
-      catchError((error) => this.handleError(error))
+      catchError((error) => {
+        this.handleError(error);
+        return EMPTY;
+      })
     );
   }
 
@@ -50,16 +55,11 @@ export class HomeComponent implements OnInit {
   /**
    * Gère les erreurs et arrête le chargement.
    * @param error Erreur capturée.
-   * @returns Observable vide.
    */
-  private handleError(error: unknown): Observable<never> {
-    if (typeof error === 'object' && error !== null && 'message' in error) {
-      console.error('Error message:', (error as { message: string }).message);
-    } else {
-      console.error('An unknown error occurred:', error);
-    }
+  private handleError(error: unknown): void {
+    console.error('Erreur lors de la récupération des données :', error);
+    this.error = 'An error occurred while loading data.';;
     this.loading = false;
-    return EMPTY;
   }
 
   /**
