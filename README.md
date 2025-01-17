@@ -6,16 +6,12 @@ This is an Angular-based front-end project that displays Olympic data in differe
 ## Installation
 This project was generated with Angular CLI version 18.0.3.
 Please ensure that all additional libraries are compatible with the dependencies (refer to angular.json for version checks).
-![Angular Badge](https://img.shields.io/badge/Angular-18.0.3-red)
-![Ngx-Charts Badge](https://img.shields.io/badge/Ngx--Charts-2.0.0-green)
-![Font Awesome Badge](https://img.shields.io/badge/Font%20Awesome-6.0.0-blue)
-![Sass Badge](https://img.shields.io/badge/Sass-1.32.0-pink)
 
 ### Prerequisites
 Ensure you have the following installed on your system:
-*Node.js (for managing packages)
-*Angular CLI (for running Angular projects)
+
 ![Node.js Badge](https://img.shields.io/badge/Node.js-16.0.0-brightgreen)
+
 ![npm Badge](https://img.shields.io/badge/npm-7.20.0-blue)
 
 ### Steps to Install
@@ -23,13 +19,13 @@ To get started with the project, clone the repository, navigate to the project d
 
 - Clone the repository by running: git clone https://github.com/yourusername/your-repository-name.git
 - Navigate to the project directory using: cd your-repository-name
-- Install the required dependencies by executing: npm install
+- Install the required dependencies by executing: 'npm install'
 
 ## Development Server
-To run the application locally, use the ng serve command. Afterward, navigate to http://localhost:4200/ in your browser. The application will automatically reload if you change any of the source files.
+To run the application locally, use the 'ng serve' command. Afterward, navigate to http://localhost:4200/ in your browser. The application will automatically reload if you change any of the source files.
 
 ## Build
-For production, use the ng build command to build the project. The output will be stored in the dist/ directory.
+For production, use the 'ng build' command to build the project. The output will be stored in the dist/ directory.
 
 ## Project Architecture
 The project follows a predefined architecture, which can be customized to suit your needs. It includes the following folders:
@@ -47,10 +43,13 @@ The project follows a predefined architecture, which can be customized to suit y
 - Loading and notification
 
 ## Technologies Used
-Angular: A platform for building web applications.
-Ngx-Charts: A charting library for Angular.
-Font Awesome: Used for icons such as medals and trophies in tooltips.
-Sass: For styling and managing stylesheets.
+![Angular Badge](https://img.shields.io/badge/Angular-18.0.3-red) A platform for building web applications.
+
+![Ngx-Charts Badge](https://img.shields.io/badge/Ngx--Charts-2.0.0-green) A charting library for Angular.
+
+![Font Awesome Badge](https://img.shields.io/badge/Font%20Awesome-6.0.0-blue) Used for icons such as medals and trophies in tooltips.
+
+![Sass Badge](https://img.shields.io/badge/Sass-1.32.0-pink) For styling and managing stylesheets.
 
 ## Where to Start
 To begin, familiarize yourself with the starter code provided. Pay close attention to the following files:
