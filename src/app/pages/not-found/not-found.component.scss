@@ -1,8 +1,5 @@
-.center {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+@import "../../../styles.scss";
+
+.page-not-found h2 {
+  color: $primary-color; 
 }
