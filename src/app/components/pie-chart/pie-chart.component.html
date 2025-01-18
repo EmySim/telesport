@@ -1,29 +1,22 @@
 <div *ngIf="(chartData ?? []).length > 0; else noData">
+
   <div class="pie-chart-container">
     <ngx-charts-pie-chart 
-    [view]="view" 
-    [results]="chartData" 
-    [gradient]="true" 
-    [legend]="false" 
-    [labels]="true"
-    [doughnut]="false" 
-    [explodeSlices]="false" 
-    [animations]="true" 
-    (select)="onCountrySelect($event)">
-  </ngx-charts-pie-chart>
-      
-      <!-- Tooltip -->
-      <ng-template #tooltipTemplate let-model="model">
-        <TooltipComponent 
-        [country]="model.name" 
-        [medalsCount]="model.value">
-        </TooltipComponent>
-      </ng-template>
+      [view]="view" 
+      [results]="chartData" 
+      (select)="onCountrySelect($event)"
+    ></ngx-charts-pie-chart>
 
+    <ng-template #tooltipTemplate let-model="model">
+      <TooltipComponent 
+      [country]="model.name" 
+      [medalsCount]="model.value"
+      ></TooltipComponent>
+    </ng-template>
   </div>
+  
 </div>
 
-<!-- Message en cas d'absence de données -->
 <ng-template #noData>
-  <p>No data available to display in graph.</p>
+  <p>No data available for the chart.</p>
 </ng-template>

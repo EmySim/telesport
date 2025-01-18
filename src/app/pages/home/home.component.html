@@ -4,9 +4,9 @@
 
 <!-- Composant générique pour le chargement et les erreurs -->
 <app-loading-error
-  [loading]="loading"
-  [error]="error"
-  errorMessage="Failed to load data. Please try again later."
+  [loading]="(stateService.loading$ | async) ?? false"
+  [error]="(stateService.error$ | async) ?? null"
+  [dataAvailable]="(stateService.dataAvailable$ | async) ?? false"
 >
   <div class="home-data">
     <div class="data-card">
@@ -22,9 +22,8 @@
   <!-- Conteneur pour le graphique -->
   <div class="pie-chart-container">
     <app-pie-chart
-      [olympics]="(olympics$ | async) || []"
-      (countrySelect)="onCountrySelect($event)"
-    >
-    </app-pie-chart>
+    [chartData]="chartData"
+    (countrySelect)="onCountrySelect($event)"
+    ></app-pie-chart>
   </div>
 </app-loading-error>

@@ -1,11 +1,13 @@
-<div class="loading-container">
-    <h2>Loading in progress...</h2>
+<div *ngIf="loading; else dataLoaded" class="loading-indicator">
+  <h2>Loading in progress...</h2>
 </div>
 
-<div class=".error-container">
-    <h2>Failed to load data.</h2>
-</div>
-
-<div class=".no-data-indicator">
+<ng-template #dataLoaded>
+  <div *ngIf="error && !loading" class="error-indicator">
+    <h2>{{ error }}</h2>
+  </div>
+  <div *ngIf="!loading && !error && !dataAvailable" class="no-data-indicator">
     <h2>Data unavailable.</h2>
-</div>
+  </div>
+  <ng-content *ngIf="!loading && !error && dataAvailable"></ng-content>
+</ng-template>
